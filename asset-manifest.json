@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/GoProgress/static/js/main.15a2ada3.chunk.js",
-    "main.js.map": "/GoProgress/static/js/main.15a2ada3.chunk.js.map",
+    "main.js": "/GoProgress/static/js/main.2a745cdf.chunk.js",
+    "main.js.map": "/GoProgress/static/js/main.2a745cdf.chunk.js.map",
     "runtime-main.js": "/GoProgress/static/js/runtime-main.15b621c1.js",
     "runtime-main.js.map": "/GoProgress/static/js/runtime-main.15b621c1.js.map",
     "static/js/2.a374d0df.chunk.js": "/GoProgress/static/js/2.a374d0df.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.15b621c1.js",
     "static/js/2.a374d0df.chunk.js",
-    "static/js/main.15a2ada3.chunk.js"
+    "static/js/main.2a745cdf.chunk.js"
   ]
 }
