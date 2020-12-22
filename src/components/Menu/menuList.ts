@@ -9,9 +9,10 @@ import { SvgIconType } from "../../styles/types";
 
 export interface MenuListItem {
   id: string;
-  icon: SvgIconType;
+  icon?: SvgIconType;
   href: string;
   text: string;
+  color?: string;
 }
 
 export const menuList: MenuListItem[] = [

@@ -8,7 +8,7 @@ const Menu: React.FC = () => {
     <MenuContainer>
       {menuList.map((item) => (
         <MenuItemWrapper key={item.id}>
-          <MenuButton Icon={item.icon} href={item.href}>{item.text}</MenuButton>
+          <MenuButton color={item.color} Icon={item.icon} href={item.href}>{item.text}</MenuButton>
         </MenuItemWrapper>
       ))}
     </MenuContainer>

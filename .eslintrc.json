@@ -5,7 +5,9 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "settings": {
         "import/resolver": {
@@ -69,6 +71,10 @@
         "no-use-before-define": 0,
         "arrow-body-style": 0,
         "import/prefer-default-export": 0,
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error"
+        ]
     }
 }

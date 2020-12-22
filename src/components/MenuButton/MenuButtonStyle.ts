@@ -1,7 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, NavLinkProps } from "react-router-dom";
 import styled from "styled-components/macro";
 
-export const MenuButtonLink = styled(NavLink)`
+interface MenuButtonLinkProps extends NavLinkProps {
+  color?: string;
+}
+
+export const MenuButtonLink = styled(NavLink)<MenuButtonLinkProps>`
   display: flex;
   width: 100%;
   height: 100%;
@@ -11,19 +15,22 @@ export const MenuButtonLink = styled(NavLink)`
   align-items: center;
   color: inherit;
   text-decoration: none;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 
   &.active {
-    box-shadow: 0 0 2px 2px ${({ theme }) => theme.colors.hover};
+    color: ${({ theme, color }) => color || theme.colors.defaultHoverFont};
+    box-shadow: 0 0 2px 2px ${({ theme, color }) => theme.colors.withOpacity(color)};
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
+    color: ${({ theme, color }) => color || theme.colors.defaultHoverFont};
+    background-color: ${({ theme, color }) => theme.colors.withOpacity(color)};
   }
 
   &:focus {
     outline: none;
-    background-color: ${({ theme }) => theme.colors.hover};
+    color: ${({ theme, color }) => color || theme.colors.defaultHoverFont};
+    background-color: ${({ theme, color }) => theme.colors.withOpacity(color)};
   }
 
   & > svg {
