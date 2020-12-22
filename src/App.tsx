@@ -1,11 +1,14 @@
 import React from "react";
 import { Menu } from "./components/Menu/Menu";
-import { AppContainer } from "./styles/AppStyle";
+import { AppContainer, MainContent, SideMenu } from "./styles/AppStyle";
 
 const App: React.FC = () => {
   return (
     <AppContainer>
-      <Menu />
+      <SideMenu>
+        <Menu />
+      </SideMenu>
+      <MainContent>sadfsdaf</MainContent>
     </AppContainer>
   );
 };

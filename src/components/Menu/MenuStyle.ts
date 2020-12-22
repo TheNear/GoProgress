@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { modalBoxShadow } from "../../styles/CommonStyles";
+import { device } from "../../styles/breakpoints";
 
 export const MenuContainer = styled.ul`
   display: grid;
@@ -7,7 +7,11 @@ export const MenuContainer = styled.ul`
   gap: 1rem;
   padding: 1rem;
   border-radius: ${({ theme }) => theme.size.borderRadius};
-  ${modalBoxShadow};
+
+  @media ${device.laptop} {
+    grid-auto-flow: column;
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 
 export const MenuItemWrapper = styled.li`

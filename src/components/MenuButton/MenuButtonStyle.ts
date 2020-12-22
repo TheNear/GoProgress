@@ -1,5 +1,6 @@
 import { NavLink, NavLinkProps } from "react-router-dom";
 import styled from "styled-components/macro";
+import { device } from "../../styles/breakpoints";
 
 interface MenuButtonLinkProps extends NavLinkProps {
   color?: string;
@@ -19,6 +20,7 @@ export const MenuButtonLink = styled(NavLink)<MenuButtonLinkProps>`
 
   &.active {
     color: ${({ theme, color }) => color || theme.colors.defaultHoverFont};
+    background-color: ${({ theme, color }) => theme.colors.withOpacity(color)};
     box-shadow: 0 0 2px 2px ${({ theme, color }) => theme.colors.withOpacity(color)};
   }
 
@@ -38,9 +40,21 @@ export const MenuButtonLink = styled(NavLink)<MenuButtonLinkProps>`
     min-height: 2.5rem;
     margin-right: 1rem;
   }
+
+  @media ${device.laptop} {
+    justify-content: center;
+  }
+
+  @media ${device.tablet} {
+    & > svg {
+      margin-right: 0;
+    }
+  }
 `;
 
 // TODO: Добавить аддаптив
 export const MenuButtonText = styled.span`
-  /* display: none; */
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
