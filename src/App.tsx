@@ -1,10 +1,12 @@
 import React from "react";
+import { Menu } from "./components/Menu/Menu";
+import { AppContainer } from "./styles/AppStyle";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      Test
-    </div>
+    <AppContainer>
+      <Menu />
+    </AppContainer>
   );
 };
 
