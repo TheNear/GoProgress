@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(4000, () => {
-  console.log("Server is listen on porn 4000!");
+app.listen(80, () => {
+  console.log("Server is listen on porn 80!");
 });
