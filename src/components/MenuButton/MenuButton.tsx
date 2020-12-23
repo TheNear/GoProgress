@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgIconType } from "../../styles/types";
+import { SvgIconType } from "../../types/types";
 import { MenuButtonLink, MenuButtonText } from "./MenuButtonStyle";
 
 interface MenuButtonProps {

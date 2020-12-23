@@ -5,7 +5,7 @@ import {
   FcLineChart,
   FcAreaChart,
 } from "react-icons/fc";
-import { SvgIconType } from "../../styles/types";
+import { SvgIconType } from "../../types/types";
 
 export interface MenuListItem {
   id: string;

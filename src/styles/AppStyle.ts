@@ -8,8 +8,8 @@ export const AppContainer = styled.div`
   grid-template-columns: minmax(auto, 240px) 1fr;
   gap: 2rem;
   padding: 0.7rem;
-  min-height: 100vh;
-  min-width: 100%;
+  height: 100%;
+  width: 100%;
 
   @media ${device.laptop} {
     grid-auto-flow: row;

@@ -29,11 +29,17 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    height: 100%;
   }
 
   body {
     font-size: 1.6rem;
     font-family: 'Nunito', sans-serif;
+    height: 100%;
     color: ${theme.colors.primaryFont};
+  }
+
+  #root {
+    height: 100%;
   }
 `;
