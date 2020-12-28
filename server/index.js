@@ -1,7 +1,5 @@
-const express = require("express");
+const app = require("express")();
 const path = require("path");
-
-const app = express();
 
 app.use(express.static(path.join(__dirname, "../build")));
 
@@ -10,6 +8,6 @@ app.get("*", (req, res) => {
 });
 
 
-app.listen(80, () => {
-  console.log("Server is listen on porn 80!");
+app.listen(8080, () => {
+  console.log("Server is listen on porn 8080!");
 });
