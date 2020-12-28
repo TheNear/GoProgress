@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "pm2 start server/app.js",
+    "stop": "pm2 stop server/app.js"
   },
   "eslintConfig": {
     "extends": [
