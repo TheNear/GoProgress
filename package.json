@@ -15,6 +15,7 @@
     "apollo-server-express": "^2.19.1",
     "express": "^4.17.1",
     "graphql": "^15.4.0",
+    "pm2": "^4.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
@@ -31,8 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "pm2 start server/app.js",
-    "stop": "pm2 stop server/app.js"
+    "server": "pm2 start server.config.js --env production",
+    "stop": "pm2 stop server.config.js"
   },
   "eslintConfig": {
     "extends": [
