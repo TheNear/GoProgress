@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { ApolloServer, gql  } = require("apollo-server-express");
@@ -16,7 +17,6 @@ const resolvers = {
 }
 
 // END: MOCKS
-require("dotenv").config();
 const app = express();
 const PORT = 8080;
 const apollo = new ApolloServer({ typeDefs, resolvers });
