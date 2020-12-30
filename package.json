@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.7",
@@ -28,14 +27,12 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "pm2 start server.config.js --env production",
-    "stop": "pm2 stop server.config.js"
+    "server": "pm2 start pm2.config.js --env production",
+    "stop": "pm2 stop pm2.config.js"
   },
   "eslintConfig": {
     "extends": [
@@ -64,7 +61,6 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "gh-pages": "^3.1.0"
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
