@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { device } from "../../styles/breakpoints";
 
 export const MenuContainer = styled.ul`
@@ -10,7 +10,6 @@ export const MenuContainer = styled.ul`
 
   @media ${device.laptop} {
     grid-auto-flow: column;
-    // TODO: Исправить
     grid-template-columns: repeat(5, 1fr);
   }
 `;

@@ -1,10 +1,10 @@
 import {
-  BarChartSquare,
-  UserRectangle,
-  Group,
-  CalendarEdit,
-  Chart,
-} from "@styled-icons/boxicons-solid";
+  FcTodoList,
+  FcConferenceCall,
+  FcSettings,
+  FcLineChart,
+  FcAreaChart,
+} from "react-icons/fc";
 import { SvgIconType } from "../../types/types";
 
 export interface MenuListItem {
@@ -20,30 +20,30 @@ export const menuList: MenuListItem[] = [
     id: "myprofile1",
     href: "/myprofile",
     text: "Мой профиль",
-    icon: UserRectangle,
+    icon: FcSettings,
   },
   {
     id: "myteam1",
     href: "/myteam",
     text: "Моя команда",
-    icon: Group,
+    icon: FcConferenceCall,
   },
   {
     id: "dolist1",
     href: "/dolist",
     text: "Запланированные задачи",
-    icon: CalendarEdit,
+    icon: FcTodoList,
   },
   {
     id: "mychart1",
     href: "/mychart",
     text: "Рейтинг в команде",
-    icon: BarChartSquare,
+    icon: FcLineChart,
   },
   {
     id: "worldchart1",
     href: "/worldchart",
     text: "Мировой рейтинг",
-    icon: Chart,
+    icon: FcAreaChart,
   },
 ];
