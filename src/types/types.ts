@@ -1,8 +1,8 @@
 import React from "react";
-import { IconType } from "react-icons/lib";
+import { StyledIcon } from "@styled-icons/styled-icon";
 
 export type ReactSvg = React.FunctionComponent<React.SVGProps<SVGSVGElement> & {
   title?: string | undefined;
 }>;
 
-export type SvgIconType = IconType | ReactSvg;
+export type SvgIconType = ReactSvg | StyledIcon;

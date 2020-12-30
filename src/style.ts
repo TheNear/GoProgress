@@ -16,7 +16,7 @@ export const theme: DefaultTheme = {
     borderRadius: "5px",
   },
   values: {
-    defColorHexOpacity: "12",
+    defColorHexOpacity: "19",
   },
 };
 
