@@ -1,11 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import bg from "../../assets/img/auth-bg.jpg";
 import { ReactComponent as LogoImg } from "../../assets/img/GOPROGRESS1.svg";
-
-export const AuthLogo = styled(LogoImg)`
-  width: 100%;
-  height: 100%;
-`;
 
 export const AuthWrapper = styled.div`
   display: flex;
@@ -14,20 +9,21 @@ export const AuthWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: url(${bg}) center / cover;
+  background-color: #004E5A;
+  background-image: url(${bg});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white;
 `;
 
 export const AuthContainer = styled.div`
+  max-width: 40rem;
   width: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  gap: 1rem;
 `;
 
-export const AuthTitleLogo = styled.h1`
-  text-transform: uppercase;
-  font-size: 6rem;
-  text-shadow: 2px 2px 5px #0000009c;
+export const AuthLogo = styled(LogoImg)`
+  width: 100%;
 `;

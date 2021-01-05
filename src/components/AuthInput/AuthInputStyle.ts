@@ -1,7 +1,22 @@
 import styled from "styled-components/macro";
 
 export const AuthInputWrapper = styled.div`
-  margin-bottom: 1rem;
+  position: relative;
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    transition: box-shadow 0.3s ease;
+  }
+
+  &:focus-within {
+    &:after {
+      box-shadow: 0 0 3px 2px #3498db;
+    }
+  }
 `;
 
 export const AuthInputLabel = styled.label`
@@ -12,8 +27,16 @@ export const AuthInputLabel = styled.label`
 `;
 
 export const AuthInputStyled = styled.input`
-  background: transparent;
+  width: 100%;
   border: none;
-  border-bottom: 1px solid white;
+  background: transparent;
   box-shadow: 0px 1px 0px 0px #00000033;
+  padding: 0.5rem;
+  color: white;
+  font-family: inherit;
+  font-size: 1.6rem;
+
+  &:focus {
+    outline: none;
+  }
 `;
