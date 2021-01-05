@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
-import { device } from "./breakpoints";
-import { modalBoxStyle } from "./CommonStyles";
+import { device } from "../../styles/breakpoints";
+import { modalBoxStyle } from "../../styles/CommonStyles";
 
-export const AppContainer = styled.div`
+export const MainContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: minmax(auto, 240px) 1fr;
