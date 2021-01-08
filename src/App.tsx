@@ -7,8 +7,8 @@ import { Main } from "./pages/Main/Main";
 const App: React.FC = () => {
   return (
     <Switch>
-      <PrivateRoute exact path="/" component={Main} />
-      <Route exact path="/auth" component={Auth} />
+      <Route path="/auth" component={Auth} />
+      <PrivateRoute path="/" component={Main} />
     </Switch>
   );
 };
