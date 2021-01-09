@@ -21,7 +21,7 @@ const AuthLogin: React.FC = () => {
       <Typography.Title level={2}>
         Авторизация
       </Typography.Title>
-      <LoginForm form={form} onFinish={onSubmit}>
+      <LoginForm form={form} onFinish={onSubmit} scrollToFirstError validateTrigger="onSubmit">
         <LoginForm.Item
           name="username"
           rules={usernameRules}

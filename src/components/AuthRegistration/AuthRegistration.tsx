@@ -1,7 +1,7 @@
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { useForm } from "antd/lib/form/Form";
 import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import { Typography } from "antd";
 import { useMutation } from "@apollo/client";
 import {
@@ -14,11 +14,7 @@ import { USERS_QUERY } from "./gql";
 
 const AuthRegistration: React.FC = () => {
   const [form] = useForm();
-  const [createUser, { data }] = useMutation(USERS_QUERY);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const [createUser] = useMutation(USERS_QUERY);
 
   const onSubmit = () => {
     const { email, username, password } = form.getFieldsValue();
@@ -36,17 +32,17 @@ const AuthRegistration: React.FC = () => {
   return (
     <RegFormWrapper>
       <Typography.Title level={2}>Регистрация</Typography.Title>
-      <RegForm form={form} onFinish={onSubmit}>
-        <RegForm.Item name="email" rules={emailRules}>
+      <RegForm form={form} onFinish={onSubmit} scrollToFirstError>
+        <RegForm.Item validateFirst name="email" rules={emailRules}>
           <RegInput prefix={<MailOutlined />} placeholder="@ E-mail" />
         </RegForm.Item>
-        <RegForm.Item name="username" rules={usernameRules}>
+        <RegForm.Item validateFirst name="username" rules={usernameRules}>
           <RegInput prefix={<UserOutlined />} placeholder="Username" />
         </RegForm.Item>
-        <RegForm.Item name="password" rules={passRules}>
+        <RegForm.Item validateFirst name="password" rules={passRules}>
           <RegInput.Password prefix={<LockOutlined />} type="password" placeholder="Password" />
         </RegForm.Item>
-        <RegForm.Item name="password_repeat" rules={reapeatPassRules}>
+        <RegForm.Item validateFirst name="password_repeat" rules={reapeatPassRules}>
           <RegInput.Password
             prefix={<LockOutlined />}
             type="password"
