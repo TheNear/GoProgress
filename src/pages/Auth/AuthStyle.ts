@@ -1,29 +1,26 @@
-import styled from "styled-components/macro";
-import bg from "../../assets/img/auth-bg.jpg";
-import { ReactComponent as LogoImg } from "../../assets/img/GOPROGRESS1.svg";
+import styled from "styled-components";
+import { animated } from "react-spring";
 
-export const AuthWrapper = styled.div`
+export const Wrapper = styled(animated.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
-  background-color: #004E5A;
-  background-image: url(${bg});
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: white;
+  box-shadow: 0px 0px 7px 1px black;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  overflow-x: hidden;
 `;
 
-export const AuthContainer = styled.div`
+export const Container = styled(animated.div)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 40rem;
-  width: 40%;
-  display: grid;
-  gap: 1rem;
-`;
-
-export const AuthLogo = styled(LogoImg)`
-  width: 100%;
+  padding: 3rem;
+  background-color: white;
+  box-shadow: 0 0 3px 0px #000000c7;
+  border-radius: ${({ theme }) => theme.size.borderRadius};
+  overflow-x: hidden;
 `;

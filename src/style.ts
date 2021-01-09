@@ -21,12 +21,6 @@ export const theme: DefaultTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-  }
-
   html {
     font-size: 62.5%;
     height: 100%;
@@ -37,9 +31,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
     height: 100%;
     color: ${theme.colors.primaryFont};
+    overflow-x: hidden;
   }
 
   #root {
     height: 100%;
+    overflow-x: hidden;
   }
 `;

@@ -5,8 +5,8 @@ module.exports = {
     },
   },
   Mutation: {
-    createUser: async (parent, { name, email }, { models: { userModel } }) => {
-      const newUser = new userModel({ name, email });
+    createUser: async (parent, { name, email, password }, { models: { userModel } }) => {
+      const newUser = new userModel({ name, email, password });
       return newUser.save();
     },
   },
