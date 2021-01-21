@@ -1,34 +1,58 @@
 const bcrypt = require("bcrypt");
-const { userModel } = require("../modules");
-const { SALT } = require("../core/config");
+const jwt = require("jsonwebtoken");
+const { SALT, SECRET } = require("../core/config");
 
 
+// TODO: Валидация на сервере
 module.exports = {
   Query: {
-    users: async (parent, args, { models }) => {
+    users: async (_parent, _args, { models }) => {
       const { userModel } = models;
       return await userModel.find({});
     },
   },
   Mutation: {
-    createUser: async (parent, args, { models }) => {
+    createUser: async (_parent, args, { models }) => {
       const { name, email, password } = args;
       const { userModel } = models;
+
+      const isEmailUsed = await userModel.findOne({ email });
+      if (isEmailUsed) {
+        throw new Error("email:Такая почта уже занята.")
+      }
+      const isNameUsed = await userModel.findOne({ name });
+      if (isNameUsed) {
+        throw new Error("username:Такое имя уже существует.")
+      }
+
       const newUser = await userModel.create({
         name,
         email,
         password: bcrypt.hashSync(password, SALT),
-      })
-      return newUser.save();
-    },
-    loginUser: async (parent, args) => {
-      const { email, password } = args;
-      const user = await userModel.findOne({ email,password });
-      console.log(user);
+      });
       return {
-        name: user.name,
-        email: user.email,
+        token: jwt.sign({ uid: newUser._id }, SECRET),
+      };
+    },
+    loginUser: async (_parent, args, { models }) => {
+      const { email, password } = args;
+      const { userModel } = models;
+
+      const user = await userModel.findOne({ email });
+
+      if (!user) {
+        throw new Error("email:Неправильная почта/пароль.");
       }
+
+      const isMatch = bcrypt.compareSync(password, user.password);
+
+      if (!isMatch) {
+        throw new Error("email:Неправильная почта/пароль.");
+      }
+
+      return {
+        token: jwt.sign({ uid: user._id }, SECRET),
+      };
     },
   },
 };

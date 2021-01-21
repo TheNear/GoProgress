@@ -6,6 +6,7 @@ import {
 import { AuthLogin } from "../../components/AuthLogin/AuthLogin";
 import { AuthRegistration } from "../../components/AuthRegistration/AuthRegistration";
 import { Container, Wrapper } from "./AuthStyle";
+import { LOCAL_STORAGE, ROUTES } from "../../types/enums";
 
 const Auth: React.FC = () => {
   const location = useLocation();
@@ -15,14 +16,18 @@ const Auth: React.FC = () => {
     leave: { opacity: 0, transform: "translate3d(100%,0,0)", position: "absolute" },
   });
 
+  if (localStorage.getItem(LOCAL_STORAGE.token)) {
+    return <Redirect to={ROUTES.home} />;
+  }
+
   return (
     <Wrapper>
       {transitions.map(({ item: loc, props, key }) => (
         <Container key={key} style={props}>
           <Switch location={loc}>
-            <Route path="/auth/login" component={AuthLogin} />
-            <Route path="/auth/registration" component={AuthRegistration} />
-            <Redirect from="*" to="/auth/login" />
+            <Route path={ROUTES.login} component={AuthLogin} />
+            <Route path={ROUTES.registration} component={AuthRegistration} />
+            <Redirect from={ROUTES.all} to={ROUTES.login} />
           </Switch>
         </Container>
       ))}
