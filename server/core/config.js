@@ -6,8 +6,13 @@ const MONGO_CONFIG = {
   useUnifiedTopology: true,
 }
 
+const SALT = parseInt(process.env.SALT) || 7;
+const SECRET = process.env.SECRET || "SimpleSec";
+
 module.exports = {
   MONGO_URL,
   MONGO_CONFIG,
-  PORT
+  PORT,
+  SALT,
+  SECRET,
 }
