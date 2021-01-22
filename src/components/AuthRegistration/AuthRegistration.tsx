@@ -1,35 +1,24 @@
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { useForm } from "antd/lib/form/Form";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import { Typography } from "antd";
-import { useMutation } from "@apollo/client";
 import {
   RegButton, RegForm, RegFormWrapper, RegInput,
 } from "./AuthRegistrationStyle";
 import {
   emailRules, passRules, reapeatPassRules, usernameRules,
 } from "../../helpers/authvalid";
-import { USERS_QUERY } from "./gql";
-import { LOCAL_STORAGE, ROUTES } from "../../types/enums";
+import { useRegistration } from "../../hooks/useRegistration";
 
 const AuthRegistration: React.FC = () => {
   const [form] = useForm();
-  const history = useHistory();
-  const [createUser] = useMutation(USERS_QUERY);
+  const { registration } = useRegistration();
 
   const onSubmit = async () => {
     try {
       const { email, username, password } = form.getFieldsValue();
-      const { data } = await createUser({
-        variables: {
-          name: username,
-          email,
-          password,
-        },
-      });
-      localStorage.setItem(LOCAL_STORAGE.token, data.createUser.token);
-      history.push(ROUTES.home);
+      await registration(username, email, password);
     } catch (e) {
       const errorData = e.message.split(":");
       form.resetFields(["password", "password_repeat"]);

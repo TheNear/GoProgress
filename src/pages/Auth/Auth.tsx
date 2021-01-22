@@ -6,7 +6,7 @@ import {
 import { AuthLogin } from "../../components/AuthLogin/AuthLogin";
 import { AuthRegistration } from "../../components/AuthRegistration/AuthRegistration";
 import { Container, Wrapper } from "./AuthStyle";
-import { LOCAL_STORAGE, ROUTES } from "../../types/enums";
+import { ROUTES } from "../../types/enums";
 
 const Auth: React.FC = () => {
   const location = useLocation();
@@ -15,10 +15,6 @@ const Auth: React.FC = () => {
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
     leave: { opacity: 0, transform: "translate3d(100%,0,0)", position: "absolute" },
   });
-
-  if (localStorage.getItem(LOCAL_STORAGE.token)) {
-    return <Redirect to={ROUTES.home} />;
-  }
 
   return (
     <Wrapper>

@@ -5,6 +5,7 @@ export const theme: DefaultTheme = {
     primaryFont: "#333333",
     defaultHoverFont: "#4a6581",
     active: "#a9d1fe82",
+    bgGradient: "linear-gradient(315deg, #0cbaba 0%, #380036 74%)",
     withOpacity: (
       color = theme.colors.defaultHoverFont,
       opacity = theme.values.defColorHexOpacity,

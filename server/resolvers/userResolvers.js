@@ -10,6 +10,9 @@ module.exports = {
       const { userModel } = models;
       return await userModel.find({});
     },
+    getAuthStatus: async (_parent, _args, { user }) => {
+      return user ? true : false;
+    },
   },
   Mutation: {
     createUser: async (_parent, args, { models }) => {
@@ -53,6 +56,6 @@ module.exports = {
       return {
         token: jwt.sign({ uid: user._id }, SECRET),
       };
-    },
+    }
   },
 };

@@ -1,13 +1,17 @@
 import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
-import { LOCAL_STORAGE, ROUTES } from "../types/enums";
-
-// interface PrivateRouteProps extends RouteProps {
-
-// }
+import { GlobalPreloader } from "../components/GlobalPreloader/GlobalPreloader";
+import { useLoginStatus } from "../hooks/useLoginStatus";
+import { ROUTES } from "../types/enums";
 
 const PrivateRoute: React.FC<RouteProps> = ({ component: Component, path }) => {
-  if (!localStorage.getItem(LOCAL_STORAGE.token)) {
+  const { data, loading } = useLoginStatus();
+
+  if (loading || !data) {
+    return <GlobalPreloader />;
+  }
+
+  if (!data.getAuthStatus) {
     return <Redirect to={ROUTES.auth} />;
   }
 

@@ -9,6 +9,7 @@ declare module "styled-components" {
       defaultHoverFont: string,
       active: string,
       withOpacity: ColorWithOpacity,
+      bgGradient: string,
     },
     size: {
       borderRadius: string,

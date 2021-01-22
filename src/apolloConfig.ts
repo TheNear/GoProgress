@@ -18,8 +18,10 @@ const authLink = setContext((_req, { headers }) => {
   };
 });
 
+const rootLink = authLink.concat(httpLink);
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: rootLink,
   cache: new InMemoryCache(),
 });
 

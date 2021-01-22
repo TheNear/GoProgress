@@ -1,33 +1,22 @@
-import { useMutation } from "@apollo/client";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import Checkbox from "antd/lib/checkbox/Checkbox";
 import { useForm } from "antd/lib/form/Form";
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { passRules, emailRules } from "../../helpers/authvalid";
-import { LOGIN_QUERY } from "./gql";
+import { useLogin } from "../../hooks/useLogin";
 import {
   LoginButton, LoginForm, LoginFormWrapper, LoginInput,
 } from "./AuthLoginStyle";
-import { LOCAL_STORAGE, ROUTES } from "../../types/enums";
 
 const AuthLogin: React.FC = () => {
   const [form] = useForm();
-  const history = useHistory();
-  const [loginUser] = useMutation(LOGIN_QUERY);
-
+  const { login } = useLogin();
   const onSubmit = async () => {
     try {
       const { email, password } = form.getFieldsValue();
-      const { data } = await loginUser({
-        variables: {
-          email,
-          password,
-        },
-      });
-      localStorage.setItem(LOCAL_STORAGE.token, data.loginUser.token);
-      history.push(ROUTES.home);
+      await login(email, password);
     } catch (e) {
       const errorData = e.message.split(":");
       form.resetFields(["password"]);

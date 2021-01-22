@@ -12,7 +12,6 @@ const apolloStart = async (app) => {
       context: async ({ req }) => {
         const token = req.headers.authorization || '';
         const user = getUser(token);
-        console.log(user);
         return {
           models: models,
           user,

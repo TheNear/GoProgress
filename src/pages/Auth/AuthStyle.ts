@@ -8,7 +8,7 @@ export const Wrapper = styled(animated.div)`
   align-items: center;
   height: 100%;
   box-shadow: 0px 0px 7px 1px black;
-  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  background-image: ${({ theme }) => theme.colors.bgGradient};
   overflow-x: hidden;
 `;
 
