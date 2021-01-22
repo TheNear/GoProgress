@@ -15,6 +15,7 @@ const LOGIN_MUTATION = gql`
 
 type UseLoginType = () => {
   login: (email: string, password: string) => void;
+  logout: () => void;
   result: MutationResult
 };
 
@@ -30,7 +31,7 @@ interface LoginMutationVar {
 }
 
 export const useLogin: UseLoginType = () => {
-  const { setAuthToken } = useAuthToken();
+  const { setAuthToken, removeAuthToken } = useAuthToken();
   const apolloClient = useApolloClient();
   const history = useHistory();
   const [mutation, result] = useMutation<LoginMutationResult, LoginMutationVar>(LOGIN_MUTATION, {
@@ -50,7 +51,14 @@ export const useLogin: UseLoginType = () => {
     });
   };
 
+  const logout = () => {
+    removeAuthToken();
+    apolloClient.resetStore();
+    history.push(ROUTES.home);
+  };
+
   return {
+    logout,
     login,
     result,
   };
