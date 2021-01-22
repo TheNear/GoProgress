@@ -5,7 +5,7 @@ import { setContext } from "@apollo/client/link/context";
 import { LOCAL_STORAGE } from "./types/enums";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:8080/graphql",
+  uri: process.env.NODE_ENV === "production" ? "/graphql" : "http://localhost:8080/graphql",
 });
 
 const authLink = setContext((_req, { headers }) => {
