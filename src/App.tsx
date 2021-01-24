@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <Switch>
       <Route path={ROUTES.auth} component={Auth} />
-      <PrivateRoute path={ROUTES.home} component={Main} />
+      <PrivateRoute path={ROUTES.main} component={Main} />
     </Switch>
   );
 };
