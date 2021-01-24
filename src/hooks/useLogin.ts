@@ -1,40 +1,20 @@
-import {
-  gql, MutationResult, useApolloClient, useMutation,
-} from "@apollo/client";
+import { MutationResult, useApolloClient, useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import { LoginMutation, LoginMutationResult, LoginMutationVar } from "../graphql/authQueries";
 import { ROUTES } from "../types/enums";
 import { useAuthToken } from "./useAuthToken";
-
-const LOGIN_MUTATION = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
-      token
-    }
-  }
-`;
 
 type UseLoginType = () => {
   login: (email: string, password: string) => void;
   logout: () => void;
-  result: MutationResult
+  result: MutationResult;
 };
-
-interface LoginMutationResult {
-  loginUser: {
-    token: string;
-  };
-}
-
-interface LoginMutationVar {
-  email: string;
-  password: string;
-}
 
 export const useLogin: UseLoginType = () => {
   const { setAuthToken, removeAuthToken } = useAuthToken();
   const apolloClient = useApolloClient();
   const history = useHistory();
-  const [mutation, result] = useMutation<LoginMutationResult, LoginMutationVar>(LOGIN_MUTATION, {
+  const [mutation, result] = useMutation<LoginMutationResult, LoginMutationVar>(LoginMutation, {
     onCompleted: (data) => {
       setAuthToken(data.loginUser.token);
       apolloClient.resetStore();

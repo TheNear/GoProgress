@@ -1,39 +1,39 @@
 import styled from "styled-components/macro";
 import { device } from "../../styles/breakpoints";
-import { modalBoxStyle } from "../../styles/CommonStyles";
+// import { modalBoxStyle } from "../../styles/CommonStyles";
 
 export const MainContainer = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: minmax(auto, 240px) 1fr;
-  gap: 2rem;
-  padding: 0.7rem;
   height: 100%;
   width: 100%;
+`;
+
+export const Sider = styled.aside`
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  
+  @media ${device.laptop} {
+    width: 100vw;
+    height: 47px;
+  }
+
+  @media ${device.tablet} {
+    bottom: 0;
+  }
+`;
+
+export const Content = styled.main`
+  padding-left: calc(200px + 1rem);
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 
   @media ${device.laptop} {
-    grid-auto-flow: row;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-    font-size: 1.4rem;
+    padding: calc(47px + 1rem) 1rem 1rem 1rem;
   }
 
-  @media ${device.mobileL} {
-    grid-template-rows: 1fr auto;
+  @media ${device.tablet} {
+    padding: 1rem 1rem calc(47px + 1rem) 1rem;
   }
-`;
-
-export const SideMenu = styled.aside`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  ${modalBoxStyle};
-
-  @media ${device.mobileL} {
-    order: 2;
-  }
-`;
-
-export const MainContent = styled.main`
-
 `;

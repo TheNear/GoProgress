@@ -1,5 +1,5 @@
 const { gql } = require("apollo-server-express");
-const userSchema = require("./userSchema");
+const authSchema = require("./authSchema");
 
 const rootSchema = gql`
   type Query {
@@ -11,4 +11,4 @@ const rootSchema = gql`
   }
 `
 
-module.exports = [rootSchema, userSchema];
+module.exports = [rootSchema, authSchema];

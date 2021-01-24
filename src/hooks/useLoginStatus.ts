@@ -1,25 +1,13 @@
-import { useQuery, gql } from "@apollo/client";
-// import { useMemo } from "react";
-// import { useHistory } from "react-router-dom";
-// import { rootLink } from "../apolloConfig";
-
-const CHECK_AUTH_QUERY = gql`
-  query GetAuthStatus {
-    getAuthStatus
-  }
-`;
-
-interface CheckAuthResponse {
-  getAuthStatus: boolean
-}
+import { useQuery } from "@apollo/client";
+import { CheckAuthQuery, CheckAuthQueryResult } from "../graphql/authQueries";
 
 type UseLoginStatusType = () => {
-  data: CheckAuthResponse | undefined,
+  data: CheckAuthQueryResult | undefined,
   loading: boolean,
 };
 
 export const useLoginStatus: UseLoginStatusType = () => {
-  const { data, loading } = useQuery<CheckAuthResponse>(CHECK_AUTH_QUERY, {
+  const { data, loading } = useQuery<CheckAuthQueryResult>(CheckAuthQuery, {
     fetchPolicy: "no-cache",
   });
 

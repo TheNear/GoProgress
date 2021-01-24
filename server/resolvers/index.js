@@ -1,3 +1,3 @@
-const userResolver = require("./userResolvers");
+const authResolvers = require("./authResolvers");
 
-module.exports = [userResolver]
+module.exports = [authResolvers]

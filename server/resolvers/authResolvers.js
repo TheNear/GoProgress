@@ -3,22 +3,17 @@ const jwt = require("jsonwebtoken");
 const getUser = require("../auth/getUser");
 const { SALT, SECRET } = require("../core/config");
 
-
 // TODO: Валидация на сервере
 module.exports = {
   Query: {
-    users: async (_parent, _args, { models }) => {
-      const { userModel } = models;
-      return await userModel.find({});
-    },
     getAuthStatus: async (_parent, _args, { user }) => {
       return user ? true : false;
     },
-    emailVerify: async (_parent, { token }, { res, models}) => {
+    emailVerify: async (_parent, { token }, { res, models }) => {
       const { userModel } = models;
       const user = getUser(token);
-      console.log(user)
-      const userGet = await userModel.findById(user.uid)
+      console.log(user);
+      const userGet = await userModel.findById(user.uid);
       console.log(userGet);
     },
   },
@@ -29,11 +24,11 @@ module.exports = {
 
       const isEmailUsed = await userModel.findOne({ email });
       if (isEmailUsed) {
-        throw new Error("email:Такая почта уже занята.")
+        throw new Error("email:Такая почта уже занята.");
       }
       const isNameUsed = await userModel.findOne({ name });
       if (isNameUsed) {
-        throw new Error("username:Такое имя уже существует.")
+        throw new Error("username:Такое имя уже существует.");
       }
 
       const newUser = await userModel.create({
@@ -45,6 +40,7 @@ module.exports = {
         token: jwt.sign({ uid: newUser._id }, SECRET),
       };
     },
+
     loginUser: async (_parent, args, { models }) => {
       const { email, password } = args;
       const { userModel } = models;
@@ -64,6 +60,6 @@ module.exports = {
       return {
         token: jwt.sign({ uid: user._id }, SECRET),
       };
-    }
+    },
   },
 };
