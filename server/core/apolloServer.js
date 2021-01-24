@@ -9,12 +9,13 @@ const apolloStart = async (app) => {
     const apolloServer = new ApolloServer({
       typeDefs: schemas,
       resolvers,
-      context: async ({ req }) => {
+      context: async ({ req, res }) => {
         const token = req.headers.authorization || '';
         const user = getUser(token);
         return {
           models: models,
           user,
+          res
         }
       },
       formatError: (err) => {

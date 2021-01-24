@@ -5,6 +5,7 @@ module.exports = gql`
     users: [User]!
     user(id: ID!): User!
     getAuthStatus: Boolean
+    emailVerify(token: String!): Boolean
   }
 
   extend type Mutation {

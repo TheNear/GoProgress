@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const getUser = require("../auth/getUser");
 const { SALT, SECRET } = require("../core/config");
 
 
@@ -12,6 +13,13 @@ module.exports = {
     },
     getAuthStatus: async (_parent, _args, { user }) => {
       return user ? true : false;
+    },
+    emailVerify: async (_parent, { token }, { res, models}) => {
+      const { userModel } = models;
+      const user = getUser(token);
+      console.log(user)
+      const userGet = await userModel.findById(user.uid)
+      console.log(userGet);
     },
   },
   Mutation: {
