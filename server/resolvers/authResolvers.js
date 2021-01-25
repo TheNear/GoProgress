@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const getUser = require("../auth/getUser");
 const { SALT, SECRET } = require("../core/config");
 
+
+
 // TODO: Валидация на сервере
 module.exports = {
   Query: {
@@ -45,6 +47,8 @@ module.exports = {
       const { email, password } = args;
       const { userModel } = models;
 
+
+
       const user = await userModel.findOne({ email: { $regex : new RegExp(email, "i") } });
 
       if (!user) {
@@ -56,6 +60,7 @@ module.exports = {
       if (!isMatch) {
         throw new Error("email:Неправильная почта/пароль.");
       }
+
 
       return {
         token: jwt.sign({ uid: user._id }, SECRET),

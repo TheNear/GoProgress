@@ -10,6 +10,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    group: {
+      type: Schema.Types.ObjectId,
+      ref: "groups",
+    },
     password: {
       type: String,
       required: true,
