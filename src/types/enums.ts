@@ -2,6 +2,7 @@ export enum ROUTES {
   main = "/",
   home = "/home",
   profile = "/profile",
+  profileSetting = "/profile/setting",
   team = "/team",
   dolist = "/dolist",
   chart = "/chart",

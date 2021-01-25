@@ -22,11 +22,11 @@ module.exports = {
       const { name, email, password } = args;
       const { userModel } = models;
 
-      const isEmailUsed = await userModel.findOne({ email });
+      const isEmailUsed = await userModel.findOne({ email: { $regex : new RegExp(email, "i") }});
       if (isEmailUsed) {
         throw new Error("email:Такая почта уже занята.");
       }
-      const isNameUsed = await userModel.findOne({ name });
+      const isNameUsed = await userModel.findOne({ name: { $regex : new RegExp(name, "i") } });
       if (isNameUsed) {
         throw new Error("username:Такое имя уже существует.");
       }
@@ -45,7 +45,7 @@ module.exports = {
       const { email, password } = args;
       const { userModel } = models;
 
-      const user = await userModel.findOne({ email });
+      const user = await userModel.findOne({ email: { $regex : new RegExp(email, "i") } });
 
       if (!user) {
         throw new Error("email:Неправильная почта/пароль.");

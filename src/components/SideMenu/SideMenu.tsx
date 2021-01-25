@@ -17,7 +17,7 @@ const SideMenu: React.FC = () => {
   return (
     <MenuStyled
       mode={isNotDesktop ? "horizontal" : "vertical"}
-      selectedKeys={[pathname]}
+      selectedKeys={[pathname.replace(/(?!^\/.*)\/.*$/gm, "")]}
       theme="dark"
       triggerSubMenuAction="click"
     >

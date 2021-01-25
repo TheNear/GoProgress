@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
 import { device } from "../../styles/breakpoints";
-// import { modalBoxStyle } from "../../styles/CommonStyles";
 
 export const MainContainer = styled.div`
   height: 100%;
@@ -24,10 +23,13 @@ export const Sider = styled.aside`
 `;
 
 export const Content = styled.main`
+  display: flex;
   padding-left: calc(200px + 1rem);
   padding-top: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+  min-height: 100vh;
+  background-color: #F0F2F5;
 
   @media ${device.laptop} {
     padding: calc(47px + 1rem) 1rem 1rem 1rem;

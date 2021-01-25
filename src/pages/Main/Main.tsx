@@ -1,6 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
 import { SideMenu } from "../../components/SideMenu/SideMenu";
-import { MainContainer, Content, Sider } from "./MainStyle";
+import { SmallPreloader } from "../../components/SmallPreloader/SmallPreloader";
+import { ROUTES } from "../../types/enums";
+import {
+  MainContainer, Content, Sider,
+} from "./MainStyle";
+
+const Profile = React.lazy(() => import("./../Profile/Profile"));
 
 const Main: React.FC = () => {
   return (
@@ -8,7 +15,13 @@ const Main: React.FC = () => {
       <Sider>
         <SideMenu />
       </Sider>
-      <Content> content</Content>
+      <Content>
+        <Suspense fallback={<SmallPreloader />}>
+          <Switch>
+            <Route path={ROUTES.profile} component={Profile} />
+          </Switch>
+        </Suspense>
+      </Content>
     </MainContainer>
   );
 };
