@@ -1,81 +1,19 @@
 {
   "name": "goprogress",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@ant-design/icons": "^4.3.0",
-    "@apollo/client": "^3.3.6",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "@types/styled-components": "^5.1.7",
-    "antd": "^4.10.0",
-    "apollo-server-express": "^2.19.1",
-    "bcrypt": "^5.0.0",
-    "concurrently": "^5.3.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "graphql": "^15.4.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.9",
-    "nodemailer": "^6.4.17",
-    "nodemailer-smtp-transport": "^2.7.4",
-    "nodemon": "^2.0.7",
-    "pm2": "^4.5.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-hook-form": "^6.14.0",
-    "react-responsive": "^8.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1",
-    "react-spring": "^8.0.27",
-    "styled-components": "^5.2.1",
-    "typescript": "^4.1.2",
-    "web-vitals": "^0.2.4"
-  },
+  "version": "0.0.7",
+  "description": "My Pet project",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "devserver": "nodemon server/app.js",
-    "dev": "concurrently --kill-others \"npm run devserver\" \"npm run start\"",
-    "server": "pm2 start pm2.config.js --env production",
-    "stop": "pm2 stop pm2.config.js"
+    "client-dev": "cd client && yarn start",
+    "server-dev": "cd server && yarn dev",
+    "client-install": "cd client && yarn",
+    "server-install": "cd server && yarn",
+    "all-install": "concurrently \"yarn client-install\" \"yarn server-install\"",
+    "dev": "concurrently \"yarn client-dev\" \"yarn server-dev\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/react-responsive": "^8.0.2",
-    "@types/react-router-dom": "^5.1.6",
-    "@typescript-eslint/eslint-plugin": "^4.11.0",
-    "@typescript-eslint/parser": "^4.10.0",
-    "eslint": "^7.16.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
+  "author": "TheNear",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0"
   }
 }
