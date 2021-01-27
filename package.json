@@ -8,8 +8,10 @@
     "server-dev": "cd server && yarn dev",
     "client-install": "cd client && yarn",
     "server-install": "cd server && yarn",
+    "client-build": "cd client && yarn build",
     "all-install": "concurrently \"yarn client-install\" \"yarn server-install\"",
-    "dev": "concurrently \"yarn client-dev\" \"yarn server-dev\""
+    "dev": "concurrently \"yarn client-dev\" \"yarn server-dev\"",
+    "build": "yarn client-build && ./bundle.cmd"
   },
   "author": "TheNear",
   "license": "ISC",
