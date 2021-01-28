@@ -3,9 +3,12 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 // import { getUser } from "../../auth/getUser";
 import { SALT, SECRET } from "../../core/config";
+import { ApolloContext } from "../../core/apolloServer";
+import { createJwtFromUser } from "../../auth/jwtService";
+import { IUserSchema } from "../../models/userModel";
 
 
-export const authResolver: IResolvers = { 
+export const authResolver: IResolvers<any, ApolloContext> = { 
   Query: {
     getAuthStatus: async (_parent, _args, { user }) => {
       return user ? true : false;
@@ -32,13 +35,14 @@ export const authResolver: IResolvers = {
         throw new Error("username:Такое имя уже существует.");
       }
 
-      const newUser = await userModel.create({
+      // TODO: Выделить типы с пиком отдельно
+      const newUser = await userModel.create<Pick<IUserSchema, "name" | "email" | "password">>({
         name,
         email,
         password: bcrypt.hashSync(password, SALT),
       });
       return {
-        token: jwt.sign({ uid: newUser._id }, SECRET),
+        token: createJwtFromUser({ uid: newUser._id }),
       };
     },
 

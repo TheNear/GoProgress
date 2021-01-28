@@ -1,4 +1,12 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document, ObjectId } from "mongoose";
+import { IUserSchema } from "./userModel";
+
+
+export interface IGroupShema extends Document {
+  _uid: ObjectId,
+  name: string,
+  owner: IUserSchema["_id"],
+}
 
 const chatMessageSchema = new Schema(
   {
@@ -17,7 +25,7 @@ const chatMessageSchema = new Schema(
   },
 );
 
-const groupSchema = new Schema({
+const GroupSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -30,4 +38,4 @@ const groupSchema = new Schema({
   chat: [chatMessageSchema],
 });
 
-export const groupModel = model("groups", groupSchema);
+export const groupModel = model<IGroupShema>("groups", GroupSchema);

@@ -1,6 +1,16 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document, ObjectId } from "mongoose";
+import { IGroupShema } from "./groupModel";
 
-const userSchema = new Schema(
+export interface IUserSchema extends Document {
+  _id: ObjectId,
+  name: string,
+  email: string,
+  group: IGroupShema["_id"],
+  password: string,
+  emailVerify: boolean,
+}
+
+const UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -26,4 +36,4 @@ const userSchema = new Schema(
   }
 )
 
-export const userModel = model("users", userSchema);
+export const userModel = model<IUserSchema>("users", UserSchema);

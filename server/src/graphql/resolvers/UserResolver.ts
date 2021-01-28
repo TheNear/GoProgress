@@ -1,10 +1,12 @@
 import { IResolvers } from "graphql-tools";
+import { ApolloContext } from "../../core/apolloServer";
 
-export const userResolver: IResolvers = { 
+export const userResolver: IResolvers<any, ApolloContext> = { 
   Query: {
     getUserData: async (_parent, _args, { user, models }) => {
       const { userModel } = models;
-      const userData = await userModel.findById(user.uid);
+      // TODO: Обработать неавторизованных пользователей
+      const userData = await userModel.findById(user?.uid);
       return userData;
     }
   }
