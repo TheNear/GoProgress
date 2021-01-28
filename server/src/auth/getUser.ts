@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 const { SECRET } = require("../core/config");
 
-module.exports = getUser = (token) => {
+export const getUser = (token: string) => {
   if (token) {
     try {
       const tokenValue = token.replace("Bearer ", "");

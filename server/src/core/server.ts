@@ -1,11 +1,11 @@
-const express = require("express");
+import express from "express";
+import path from "path";
+import cors from "cors";
 const { PORT } = require("./config");
-const path = require("path");
-const cors = require("cors");
 
-const app = express();
+export const app = express();
 
-const serverConnect = async () => {
+export const serverConnect = async () => {
   const buildPath = path.join(__dirname, "../../build");
   const indexPath = path.join(__dirname, "../../build/index.html")
   app.use(cors());
@@ -18,8 +18,3 @@ const serverConnect = async () => {
     throw error;
   }
 }
-
-module.exports = {
-  serverConnect,
-  app
-};

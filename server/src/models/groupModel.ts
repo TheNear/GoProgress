@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
 const chatMessageSchema = new Schema(
   {
@@ -30,4 +30,4 @@ const groupSchema = new Schema({
   chat: [chatMessageSchema],
 });
 
-module.exports = model("groups", groupSchema);
+export const groupModel = model("groups", groupSchema);

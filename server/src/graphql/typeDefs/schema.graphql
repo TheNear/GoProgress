@@ -1,0 +1,14 @@
+#import User from "User.graphql"
+#import Token from "Auth.graphql"
+
+type Query {
+  getUserData: User
+  getAuthStatus: Boolean
+  # emailVerify(token: String!): Boolean
+}
+
+type Mutation {
+  createGroup(name: String!): Boolean
+  createUser(name: String!, email: String!, password: String!): Token!
+  loginUser(email: String!, password: String!): Token!
+}

@@ -1,4 +1,6 @@
-module.exports = {
+import { IResolvers } from "graphql-tools";
+
+export const groupResolver: IResolvers = { 
   Mutation: {
     createGroup: async (_parent, args, { user, models }) => {
       const { groupModel, userModel } = models;

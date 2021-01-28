@@ -1,14 +1,13 @@
-const { ApolloServer } = require("apollo-server-express");
-const schemas = require("../schema");
-const resolvers = require("../resolvers");
-const models = require("../modules");
-const getUser = require("../auth/getUser");
+import { ApolloServer } from "apollo-server-express";
+import { Express } from "express";
+import * as models from "../models";
+import { schemaWithResolvers } from "../graphql/schema";
+import { getUser } from "../auth/getUser";
 
-const apolloStart = async (app) => {
+export const apolloStart = async (app: Express) => {
   try {
     const apolloServer = new ApolloServer({
-      typeDefs: schemas,
-      resolvers,
+      schema: schemaWithResolvers,
       context: async ({ req, res }) => {
         const token = req.headers.authorization || '';
         const user = getUser(token);
@@ -31,5 +30,3 @@ const apolloStart = async (app) => {
     throw error;
   }
 };
-
-module.exports = apolloStart;

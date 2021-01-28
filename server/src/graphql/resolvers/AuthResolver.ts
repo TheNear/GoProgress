@@ -1,23 +1,22 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const getUser = require("../auth/getUser");
-const { SALT, SECRET } = require("../core/config");
+import { IResolvers } from "graphql-tools";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+// import { getUser } from "../../auth/getUser";
+import { SALT, SECRET } from "../../core/config";
 
 
-
-// TODO: Валидация на сервере
-module.exports = {
+export const authResolver: IResolvers = { 
   Query: {
     getAuthStatus: async (_parent, _args, { user }) => {
       return user ? true : false;
     },
-    emailVerify: async (_parent, { token }, { res, models }) => {
-      const { userModel } = models;
-      const user = getUser(token);
-      console.log(user);
-      const userGet = await userModel.findById(user.uid);
-      console.log(userGet);
-    },
+    // emailVerify: async (_parent, { token }, { res, models }) => {
+    //   const { userModel } = models;
+    //   const user = getUser(token);
+    //   console.log(user);
+    //   const userGet = await userModel.findById(user.uid);
+    //   console.log(userGet);
+    // },
   },
   Mutation: {
     createUser: async (_parent, args, { models }) => {
@@ -67,4 +66,4 @@ module.exports = {
       };
     },
   },
-};
+}
