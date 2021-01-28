@@ -18,7 +18,6 @@ export const apolloStart = async (app: Express) => {
       context: async ({ req, res }): Promise<ApolloContext> => {
         const token = req.headers.authorization || "";
         const user = getUserFromJwt(token);
-        console.dir(models);
         return {
           models: models,
           user,

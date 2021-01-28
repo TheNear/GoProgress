@@ -6,8 +6,8 @@ const { PORT } = require("./config");
 export const app = express();
 
 export const serverConnect = async () => {
-  const buildPath = path.join(__dirname, "../../build");
-  const indexPath = path.join(__dirname, "../../build/index.html")
+  const buildPath = path.join(__dirname, "../static");
+  const indexPath = path.join(__dirname, "../static/index.html")
   app.use(cors());
   app.use(express.json());
   app.use(express.static(buildPath));

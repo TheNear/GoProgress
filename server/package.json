@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "build": "rm -r -f build && tsc",
+    "start-server": "pm2 start pm2.config.js --env production",
+    "stop-server": "pm2 stop pm2.config.js"
   },
   "author": "",
   "license": "ISC",

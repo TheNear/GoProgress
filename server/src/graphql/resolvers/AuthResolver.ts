@@ -64,7 +64,6 @@ export const authResolver: IResolvers<any, ApolloContext> = {
         throw new Error("email:Неправильная почта/пароль.");
       }
 
-
       return {
         token: jwt.sign({ uid: user._id }, SECRET),
       };

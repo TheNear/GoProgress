@@ -11,7 +11,7 @@ export const getUserFromJwt = (token: string): UserObject | null => {
     try {
       const tokenValue = token.replace("Bearer ", "");
       const user = <UserObject>jwt.verify(tokenValue, SECRET);
-      if(typeof user === "string") return null;
+      if (typeof user === "string") return null;
       return user;
     } catch {
       return null;

@@ -1,3 +1,2 @@
-rm -r bundle
-mkdir bundle
-mv ./client/build ./bundle/build -f
+mv ./client/build ./server/build/static -f
+cp -R ./server/src/graphql/typeDefs ./server/build/graphql/typeDefs
